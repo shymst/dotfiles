@@ -1,0 +1,6 @@
+# <Tab>を1回押すだけで入力補完が出るようにする
+set show-all-if-ambiguous on
+
+# 大文字/小文字を無視する
+set completion-ignore-case on
+
