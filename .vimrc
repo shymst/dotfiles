@@ -112,9 +112,10 @@ if dein#load_state(s:dein_dir)
     call dein#end()
     call dein#save_state()
 endif
-" 未インストールのものをインストール
-if dein#check_install()
-    call dein#install()
+
+" 不足プラグインの自動インストール
+if has('vim_starting') && dein#check_install()
+  call dein#install()
 endif
 
 filetype plugin on
