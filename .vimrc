@@ -1,12 +1,12 @@
 "--------------------
-"" vim settings
+"  vim settings
 "--------------------
-"" Theme
+" Theme
 syntax enable
 set background=dark
 colorscheme solarized
 
-""新しい行のインデントを現在行と同じにする
+"新しい行のインデントを現在行と同じにする
 set autoindent
 
 "バックアップファイルのディレクトリを指定する
@@ -25,7 +25,7 @@ set directory=$HOME/.vim/backup
 set expandtab
 
 "タブ幅の設定
-set tabstop=4
+set tabstop=2
 
 "変更中のファイルでも、保存しないで他のファイルを表示する
 set hidden
