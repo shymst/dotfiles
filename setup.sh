@@ -1,8 +1,9 @@
 #!/bin/bash
 
-DOT_FILES=(.bashrc .bash_profile …)
-
-for file in ${DOT_FILES[@]}
+for f in .??*
 do
-  ln -s $HOME/dotfiles/$file $HOME/$file
+    [[ "$f" == ".git" ]] && continue
+    [[ "$f" == ".DS_Store" ]] && continue
+
+    ln -s $HOME/dotfiles/$f $HOME/$f    
 done
