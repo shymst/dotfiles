@@ -1,6 +1,41 @@
-########################################
-##              Options 
-########################################
+#          _              
+#  _______| |__  _ __ ___ 
+# |_  / __| '_ \| '__/ __|
+#  / /\__ \ | | | | | (__ 
+# /___|___/_| |_|_|  \___|
+#                         
+#
+# It is necessary for the setting of DOTPATH
+if [[ -f ~/.path ]]; then
+    source ~/.path
+else
+    export DOTPATH="${0:A:t}"
+fi
+
+for f in ~/.zsh/[0-9]*.(sh|zsh)
+do
+    source "$f"
+done
+
+# zplug
+if [[ -f ~/.zplug/init.zsh ]]; then
+    source ~/.zplug/init.zsh
+    export ZPLUG_LOADFILE="$HOME/.zsh/zplug.zsh"
+
+    if ! zplug check --verbose; then
+        printf "Install? [y/N]: "
+        if read -q; then
+            echo; zplug install
+        else
+            echo
+        fi
+    fi
+    zplug load --verbose
+fi
+
+###########################
+        #Options 
+###########################
 # 環境変数
 export LANG=ja_JP.UTF-8
 
@@ -44,99 +79,75 @@ setopt list_packed
 zstyle ':completion:*' list-colors ''
 
 
-########################################
-##              Alias
-########################################
-
-alias ls='ls -GAF'
-alias ll='ls -l'
-
-# sudo の後のコマンドでエイリアスを有効にする
-alias sudo='sudo '
 
 
-########################################
-##              zplug
-########################################
 
-source ~/.zplug/init.zsh
 
-# Make sure to use double quotes
-zplug "zsh-users/zsh-history-substring-search"
 
-# Use the package as a command
-# And accept glob patterns (e.g., brace, wildcard, ...)
-zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
 
-# Can manage everything e.g., other person's zshrc
-zplug "tcnksm/docker-alias", use:zshrc
 
-# Disable updates using the "frozen:" tag
-zplug "k4rthik/git-cal", as:command, frozen:1
+############################################
+##                tmux
+############################################
 
-# Grab binaries from GitHub Releases
-# and rename with the "rename-to:" tag
-zplug "junegunn/fzf-bin", \
-    from:gh-r, \
-    as:command, \
-    rename-to:fzf, \
-    use:"*darwin*amd64*"
+function is_exists() { type "$1" >/dev/null 2>&1; return $?; }
+function is_osx() { [[ $OSTYPE == darwin* ]]; }
+function is_screen_running() { [ ! -z "$STY" ]; }
+function is_tmux_runnning() { [ ! -z "$TMUX" ]; }
+function is_screen_or_tmux_running() { is_screen_running || is_tmux_runnning; }
+function shell_has_started_interactively() { [ ! -z "$PS1" ]; }
+function is_ssh_running() { [ ! -z "$SSH_CONECTION" ]; }
 
-# Supports oh-my-zsh plugins and the like
-zplug "plugins/git",   from:oh-my-zsh, if:"(( $+commands[git] ))"
-zplug "themes/duellj", from:oh-my-zsh
-zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
+function tmux_automatically_attach_session()
+{
+    if is_screen_or_tmux_running; then
+        ! is_exists 'tmux' && return 1
 
-# Run a command after a plugin is installed/updated
-zplug "tj/n", hook-build:"make install"
+        if is_tmux_runnning; then
+            echo "${fg_bold[red]} _____ __  __ _   ___  __ ${reset_color}"
+            echo "${fg_bold[red]}|_   _|  \/  | | | \ \/ / ${reset_color}"
+            echo "${fg_bold[red]}  | | | |\/| | | | |\  /  ${reset_color}"
+            echo "${fg_bold[red]}  | | | |  | | |_| |/  \  ${reset_color}"
+            echo "${fg_bold[red]}  |_| |_|  |_|\___//_/\_\ ${reset_color}"
+        elif is_screen_running; then
+            echo "This is on screen."
+        fi
+    else
+        if shell_has_started_interactively && ! is_ssh_running; then
+            if ! is_exists 'tmux'; then
+                echo 'Error: tmux command not found' 2>&1
+                return 1
+            fi
 
-# Supports checking out a specific branch/tag/commit
-zplug "b4b4r07/enhancd", at:v1
-zplug "mollifier/anyframe", at:4c23cb60
+            if tmux has-session >/dev/null 2>&1 && tmux list-sessions | grep -qE '.*]$'; then
+                # detached session exists
+                tmux list-sessions
+                echo -n "Tmux: attach? (y/N/num) "
+                read
+                if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$REPLY" == '' ]]; then
+                    tmux attach-session
+                    if [ $? -eq 0 ]; then
+                        echo "$(tmux -V) attached session"
+                        return 0
+                    fi
+                elif [[ "$REPLY" =~ ^[0-9]+$ ]]; then
+                    tmux attach -t "$REPLY"
+                    if [ $? -eq 0 ]; then
+                        echo "$(tmux -V) attached session"
+                        return 0
+                    fi
+                fi
+            fi
 
-# Install if "if:" tag returns true
-zplug "hchbaw/opp.zsh", if:"(( ${ZSH_VERSION%%.*} < 5 ))"
-
-# Can manage gist file just like other packages
-zplug "b4b4r07/79ee61f7c140c63d2786", \
-    from:gist, \
-    as:command, \
-    use:get_last_pane_path.sh
-
-# Support bitbucket
-zplug "b4b4r07/hello_bitbucket", \
-    from:bitbucket, \
-    as:command, \
-    hook-build:"chmod 755 *.sh", \
-    use:"*.sh"
-
-# Group dependencies. Load emoji-cli if jq is installed in this example
-zplug "stedolan/jq", \
-    from:gh-r, \
-    as:command, \
-    rename-to:jq
-zplug "b4b4r07/emoji-cli", \
-    on:"stedolan/jq"
-# Note: To specify the order in which packages should be loaded, use the nice
-#       tag described in the next section
-
-# Set the priority when loading
-# e.g., zsh-syntax-highlighting must be loaded
-# after executing compinit command and sourcing other plugins
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
-
-# Can manage local plugins
-zplug "~/.zsh", from:local
-# A relative path is resolved with respect to the $ZPLUG_HOME
-zplug "repos/robbyrussell/oh-my-zsh/custom/plugins/my-plugin", from:local
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
+            if is_osx && is_exists 'reattach-to-user-namespace'; then
+                # on OS X force tmux's default command
+                # to spawn a shell in the user's namespace
+                tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
+                tmux -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
+            else
+                tmux new-session && echo "tmux created new session"
+            fi
+        fi
     fi
-fi
-
-# Then, source plugins and add commands to $PATH
-zplug load --verbose
+}
+tmux_automatically_attach_session
