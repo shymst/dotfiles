@@ -1,54 +1,32 @@
-These contributing guidelines were accepted rather late in the history of this plugin, after much code had already been written.
+# Contributions
 
-If you find any existing behavior which does not conform to these guidelines, please correct it and send a pull request.
+Contributions and pull requests are welcome.  Please take note of the following guidelines:
 
-# General Rules
+*  Adhere to the existing style as much as possible; notably, 2 space indents and long-form keywords.
+*  Keep the history clean!  Squash your branches before you submit a pull request.  `pull --rebase` is your friend.
+*  Any changes to the core should be tested against Vim 7.2.
 
-Every non local identifier must start with `g:vim_markdown_`.
+# Bugs
 
-# Documentation
+Tracking down bugs can take a very long time due to different configurations, versions, and operating systems.  To ensure a timely response, please help me out by doing the following:
 
-Every new feature must be documented under in the [README.md](README.md). Documentation must be written in [GFM](https://help.github.com/articles/github-flavored-markdown) since GitHub itself is the primary to HTML converter used. In particular, remember that GFM adds line breaks at single newlines, so just forget about the 70 characters wide rule.
+* Reproduce it with this [minivimrc][7] repository to rule out any configuration conflicts.  Even better, create a `gist` of your vimrc that is compatible with [pathogen][11].
+* And to make it easier to reproduce, please supply the following:
+  * the `:version` of vim
+  * the commit of vim-airline you're using
+  * the OS that you're using, including terminal emulator, GUI vs non-GUI
 
-# Markdown Flavors
+# Themes
 
-There are many flavors of markdown, each one with an unique feature set. This plugin uses the following strategy to deal with all those flavors:
+*  If you submit a theme, please create a screenshot so it can be added to the [Wiki][14].
+*  In the majority of cases, modifications to colors of existing themes will likely be rejected.  Themes are a subjective thing, so while you may prefer that a particular color be darker, another user will prefer it to be lighter, or something entirely different.  The more popular the theme, the more unlikely the change will be accepted.  However, it's pretty simple to create your own theme; copy the theme to `~/.vim/autoload/airline/themes` under a new name with your modifications, and it can be used.
 
-- Features from the [original markdown](http://daringfireball.net/projects/markdown/syntax) are turned on by default. They may not even have an option that turns them off.
+# Maintenance
 
-- Features from other markdown flavors *must* have an option that turns them on or off. If the feature is common enough across multiple versions of markdown, it may be turned on by default. This shall be decided by the community when the merge request is done.
+If you would like to take a more active role in improving vim-airline, please consider [becoming a maintainer][43].
 
-- If possible, cite the exact point in the documentation of the flavor where a feature is specified. If the feature is not documented, you may also reference the source code itself of the implementation. This way, people who do not know that flavor can check if your implementation is correct.
 
-- Do not use the name of a flavor for a feature that is used across multiple flavors. Instead, create a separate flavor option, that automatically sets each feature.
-
-    For example, fenced code blocks (putting code between pairs of three backticks) is not part of the original markdown, but is supported by [GFM](https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks) and [Jekyll](http://jekyllrb.com/docs/configuration/).
-
-    Therefore, instead of creating an option `g:vim_markdown_gfm_fenced_code_block`, and an option `g:vim_markdown_jekyll_fenced_code_block`, create a single option `g:vim_markdown_fenced_code_block`.
-
-    Next, if there are many more than one Jekyll feature options, create a `g:vim_markdown_jekyll` option that turns them all on at once.
-
-# Style
-
-When choosing between multiple valid Markdown syntaxes, the default behavior must be that specified at: <http://www.cirosantilli.com/markdown-styleguide>
-
-If you wish to have a behavior that differs from that style guide, add an option to turn it on or off, and leave it off by default.
-
-# Tests
-
-All new features must have unit tests.
-
-# Issues
-
-Issues are tracked within GitHub.
-
-When reporting issues, your report is more effective if you include a minimal example file that reproduces the problem. Try to trim out as much as possible, until you have the smallest possible file that still reproduces the issue. Paste the example inline into your issue report, quoted using four spaces at the beginning of each line, like this example from issue [#189](https://github.com/plasticboy/vim-markdown/issues/189):
-
-```
-Minimal example:
-
-    ```
-    =
-    ```
-    bad!
-```
+[7]: https://github.com/bling/minivimrc
+[11]: https://github.com/tpope/vim-pathogen
+[14]: https://github.com/vim-airline/vim-airline/wiki/Screenshots
+[43]: https://github.com/vim-airline/vim-airline/wiki/Becoming-a-Maintainer

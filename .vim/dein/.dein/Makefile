@@ -1,17 +1,55 @@
-VIMDIR=/usr/share/vim
-ADDONS=${VIMDIR}/addons
-REGISTRY=${VIMDIR}/registry
+ifeq ($(OS),Windows_NT)
+    # Need to figure out if Cygwin/Mingw is installed
+    SYS := $(shell gcc -dumpmachine)
+    ifeq ($(findstring cygwin, $(SYS)),cygwin)
+        PLATFORM = cygwin
+    endif
+    ifeq ($(findstring mingw, $(SYS)),mingw)
+        ifeq ($(findstring x86_64, $(SYS)),x86_64)
+            PLATFORM = mingw64
+        else
+            PLATFORM = mingw32
+        endif
+    endif
+else
+    # Grab the output of `uname -s` and switch to set the platform
+    UNAME_S := $(shell uname -s)
+    ifeq ($(UNAME_S),Linux)
+        PLATFORM = unix
+    endif
+    ifeq ($(UNAME_S),FreeBSD)
+        MAKE = make # BSD Make
+        PLATFORM = bsd
+    endif
+    ifeq ($(UNAME_S),DragonFly)
+        MAKE = make # BSD Make
+        PLATFORM = bsd
+    endif
+    ifeq ($(UNAME_S),NetBSD)
+        MAKE = make # BSD Make
+        PLATFORM = bsd
+    endif
+    ifeq ($(UNAME_S),OpenBSD)
+        MAKE = make # BSD Make
+        PLATFORM = bsd
+    endif
+    ifeq ($(UNAME_S),Darwin)
+        PLATFORM = mac
+    endif
+    ifeq ($(UNAME_S),SunOS)
+        PLATFORM = sunos
+    endif
+endif
 
+# Verify that the PLATFORM was detected
+ifndef PLATFORM
+    $(error Autodetection of platform failed, please use appropriate .mak file)
+endif
+
+# Invoke the platform specific make files
 all:
+	$(MAKE) -f make_$(PLATFORM).mak
 
-install:
-	mkdir -pv ${ADDONS}/ftdetect
-	cp -v ftdetect/markdown.vim ${ADDONS}/ftdetect/markdown.vim
-	mkdir -pv ${ADDONS}/ftplugin
-	cp -v ftplugin/markdown.vim ${ADDONS}/ftplugin/markdown.vim
-	mkdir -pv ${ADDONS}/syntax
-	cp -v syntax/markdown.vim ${ADDONS}/syntax/markdown.vim
-	mkdir -pv ${ADDONS}/after/ftplugin
-	cp -v after/ftplugin/markdown.vim ${ADDONS}/after/ftplugin/markdown.vim
-	mkdir -pv ${REGISTRY}
-	cp -v registry/markdown.yaml ${REGISTRY}/markdown.yaml
+clean:
+	$(MAKE) -f make_$(PLATFORM).mak clean
+

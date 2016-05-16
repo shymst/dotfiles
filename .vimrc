@@ -1,4 +1,4 @@
-"------------------------------
+""------------------------------
 "         vim settings
 "------------------------------
 
@@ -119,4 +119,3 @@ if has('vim_starting') && dein#check_install()
 endif
 
 filetype plugin on
--

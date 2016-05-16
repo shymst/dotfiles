@@ -44,11 +44,10 @@ hook_add = '''
   let g:lightline = {
   \   'colorscheme': 'solarized'
   \ }
-  set laststatus = 2
+  let laststatus = 2
 '''
 
 # Colors
-
 [[plugins]] # hybrid
 repo = 'w0ng/vim-hybrid'
 
@@ -76,3 +75,9 @@ hook_add = '''
   let g:vim_markdown_frontmatter = 1
   let g:vim_markdown_math = 1
 '''
+
+#[[plugins]]
+#repo = 'nathanaelkane/vim-indent-guides'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'

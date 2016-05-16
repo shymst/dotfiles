@@ -1,73 +1,101 @@
-Typescript Syntax for Vim
-=========================
+# html5.vim
 
-Syntax file and other settings for [TypeScript](http://typescriptlang.org). The
-syntax file is taken from this [blog
-post](http://blogs.msdn.com/b/interoperability/archive/2012/10/01/sublime-text-vi-emacs-typescript-enabled.aspx).
+HTML5 + inline SVG omnicomplete function, indent and syntax for Vim.
+Based on the default htmlcomplete.vim.
 
-Checkout [Tsuquyomi](https://github.com/Quramy/tsuquyomi) for omni-completion
-and other features for TypeScript editing.
+This plugin contributes to [vim-polyglot](https://github.com/sheerun/vim-polyglot) language pack.
 
-Install
--------
+## Feature
 
-The simplest way to install is via a Vim add-in manager such as
-[Plug](https://github.com/junegunn/vim-plug),
-[Vundle](https://github.com/gmarik/vundle) or
-[Pathogen](https://github.com/tpope/vim-pathogen/).
+- Support all new elements and attribute.
+- Support all SVG elements
+- Support [microdata][microdata].
+- Support [RDFa][RDFa].
+- Support [WAI-ARIA][aria].
 
-### Pathogen
+## Install
 
-```
-git clone https://github.com/leafgarland/typescript-vim.git ~/.vim/bundle/typescript-vim
-```
+Use [Vundle][] or [pathogen.vim][] is recommended.
 
-If you want to install manually then you need to copy the files from this
-repository into your vim path, see the vim docs for [:help
-runtimepath](http://vimdoc.sourceforge.net/htmldoc/options.html#'runtimepath')
-for more information. This might be as simple as copying the files and
-directories to `~/.vim/` but it depends on your Vim install and operating
-system.
+[Vundle]:https://github.com/gmarik/vundle
+[pathogen.vim]:https://github.com/tpope/vim-pathogen
 
-Usage
------
+For Vundle:
 
-Once the files are installed the syntax highlighting and other settings will be
-automatically enabled anytime you edit a `.ts` file.
+    Plugin 'othree/html5.vim'
 
-Indenting
----------
+## Configure
 
-This plugin includes a custom indenter (based on `indent/java.vim`), it works
-pretty well but there are cases where it fails. If these bother you or want to
-use other indent settings you can disable it by setting a flag in your
-`.vimrc`:
+Disable event-handler attributes support:
 
-```vim
-let g:typescript_indent_disable = 1
-```
+    let g:html5_event_handler_attributes_complete = 0
 
-Compiler settings
------------------
+Disable RDFa attributes support:
 
-The compiler settings enable you to call the `tsc` compiler directly from Vim
-and display any errors or warnings in Vim's QuickFix window. 
+    let g:html5_rdfa_attributes_complete = 0
 
-To run the compiler, enter `:make`, this will run `tsc` against the last saved
-version of your currently edited file.
+Disable microdata attributes support:
 
-You can add compiler options by modifying the compiler options variable.
+    let g:html5_microdata_attributes_complete = 0
 
-```vim
-let g:typescript_compiler_options = '-sourcemap'
-```
+Disable WAI-ARIA attribute support:
 
-Note, you can use something like this in your `.vimrc` to make the QuickFix
-window automatically appear if `:make` has any errors.
+    let g:html5_aria_attributes_complete = 0
 
-```vim
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
-```
+## Change Log
 
-![Obligatory screenshot](https://raw.github.com/leafgarland/typescript-vim/master/vimshot01.png)
+### Version 0.27
+
+- Support inline SVG
+
+## License
+
+Copyright (c) 2010-2013 Wei-Ko Kao, 2012 HT de Beer
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+## References
+ 
+1. [HTML5 Spec][1]
+2. [HTML5 Markup][2]
+3. [Custom Data Attributes][3]
+4. [microdata][4]
+5. [RDFa 1.0 Rec][5]
+6. [RDFa 1.1 Core WD][6]
+7. [WAI-ARIA][7]
+8. [IANA Language Sub Tags][8]
+9. [IANA Charset][9]
+10. [SVG Spec][10]
+
+[html5.vim]:http://www.vim.org/scripts/script.php?script_id=3236
+
+[microdata]:http://www.w3.org/TR/microdata/
+[RDFa]:http://www.w3.org/TR/rdfa-syntax/
+[aria]:http://www.w3.org/TR/wai-aria/
+
+[1]:http://dev.w3.org/html5/spec/
+[2]:http://dev.w3.org/html5/markup/
+[3]:http://dev.w3.org/html5/spec/Overview.html#custom-data-attribute
+[4]:http://dev.w3.org/html5/md/
+[5]:http://www.w3.org/TR/rdfa-syntax/#a_xhtmlrdfa_dtd
+[6]:http://www.w3.org/TR/rdfa-core/
+[7]:http://www.w3.org/TR/wai-aria/
+[8]:http://www.iana.org/assignments/language-subtag-registry
+[9]:http://www.iana.org/assignments/character-sets 
+[10]:http://www.w3.org/TR/SVG/
