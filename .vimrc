@@ -3,33 +3,49 @@
 "------------------------------
 
 " ---------- Theme ----------
-syntax enable
+
 set background=dark
 colorscheme solarized
 
 " ---------- Options ----------
 
+set encoding=utf-8
+set fileencoding=utf-8
+
+" 左下のインサートモードなどの文字を非表示にする
+set noshowmode
+
+" ビープ音を消す
+set vb t_vb=
+
 " 構文ハイライト有効化
 syntax enable "構文ハイライト有効化
 
 " 行番号表示
-set number 
+set number
 
 " 対応括弧強調表示
-set showmatch 
+set showmatch
 
 " backspaceを有効化
 set backspace=indent,eol,start
 
-" ---------- Indent Options ----------
-"新しい行のインデントを現在行と同じにする
-set autoindent
+" マウス操作を有効にする
+set mouse=a
 
-"新しい行を作った時に高度な自動インデントを行う
-set smarttab
+" スクロールの余裕を確保する
+set scrolloff=3
 
-"新しい行を作った時に高度な自動インデントを行う
-set smarttab
+" インサートモードに入る時に自動でコメントアウトされないようにする
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" 保存時に行末の空白を削除する
+autocmd BufWritePre * :%s/\s\+$//ge
+
+"下部のステータスラインを常に表示
+set laststatus=2
+
+set cursorline      " 現在の行をハイライト
 
 " ---------- Backup Options ----------
 "バックアップファイルのディレクトリを指定する
@@ -46,12 +62,17 @@ set clipboard=unnamed
 set nocompatible
 
 " ---------- Tab Options ----------
-"タブの代わりに空白文字を指定する
-set expandtab
+set expandtab     " タブの代わりに空白を使う
+set tabstop=2     " タブの幅
+set shiftwidth=2  " 自動インデントでずれる幅
+set softtabstop=2 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅（デフォルトでは無効: 0）
 
-"タブ幅の設定
-set tabstop=2
+" ---------- Indent Options ----------
+set smarttab      " 新しい行を作った時に高度な自動インデントを行う
+set autoindent    " 改行時に前の行のインデントを継続する
+set smartindent   " 改行時に入力された行の末尾に合わせて次の行のインデントを増減するタブの代わりに空白文字を指定する
 
+" ----------  ----------
 "インクリメンタルサーチを行う
 set incsearch
 
