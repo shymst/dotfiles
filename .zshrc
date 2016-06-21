@@ -1,9 +1,9 @@
-#          _              
-#  _______| |__  _ __ ___ 
+#          _
+#  _______| |__  _ __ ___
 # |_  / __| '_ \| '__/ __|
-#  / /\__ \ | | | | | (__ 
+#  / /\__ \ | | | | | (__
 # /___|___/_| |_|_|  \___|
-#                         
+#
 #
 
 # zsh source
@@ -11,6 +11,12 @@ for f in ~/.zsh/[0-9]*.(sh|zsh)
 do
     source "$f"
 done
+
+# C で標準出力をクリップボードにコピーする
+## mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
+if which pbcopy >/dev/null 2>&1 ; then
+    alias -g C='| pbcopy'
+fi
 
 # zplug
 if [[ -f ~/.zplug/init.zsh ]]; then

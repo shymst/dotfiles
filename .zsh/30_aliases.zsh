@@ -20,3 +20,6 @@ split_vim() {
         vim $1
     fi
 }
+
+eval "$(hub alias -s)"
+

@@ -1,6 +1,6 @@
 
 ###########################
-        #Options 
+#        Options
 ###########################
 # 環境変数
 export LANG=ja_JP.UTF-8
@@ -23,7 +23,7 @@ setopt hist_ignore_dups
 setopt hist_ignore_all_dups
 
 # 余分な空白は詰めて記録
-setopt hist_reduce_blanks 
+setopt hist_reduce_blanks
 
 # 同時に起動したzshの間でヒストリを共有
 setopt share_history
@@ -34,6 +34,8 @@ compinit -u
 if [ -e /usr/local/share/zsh-completions ]; then
   fpath=(/usr/local/share/zsh-completions $fpath)
 fi
+
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
