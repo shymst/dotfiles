@@ -46,4 +46,7 @@ setopt list_packed
 # 補完候補一覧をカラー表示
 zstyle ':completion:*' list-colors ''
 
-
+# C で標準出力をクリップボードにコピーする
+if which pbcopy >/dev/null 2>&1 ; then
+    alias -g C='| pbcopy'
+fi

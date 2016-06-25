@@ -12,12 +12,6 @@ do
     source "$f"
 done
 
-# C で標準出力をクリップボードにコピーする
-## mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
-if which pbcopy >/dev/null 2>&1 ; then
-    alias -g C='| pbcopy'
-fi
-
 # zplug
 if [[ -f ~/.zplug/init.zsh ]]; then
     source ~/.zplug/init.zsh
@@ -35,7 +29,7 @@ if [[ -f ~/.zplug/init.zsh ]]; then
 fi
 
 ########################
-        #tmux
+#        tmux
 ########################
 
 function is_exists() { type "$1" >/dev/null 2>&1; return $?; }
