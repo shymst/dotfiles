@@ -29,13 +29,15 @@ setopt hist_reduce_blanks
 setopt share_history
 
 # 補完機能を有効にする
-fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
-autoload -U compinit
-compinit -u
-if [ -e /usr/local/share/zsh-completions ]; then
-  fpath=(/usr/local/share/zsh-completions $fpath)
+if [ -d ${HOME}/.zsh/zsh-completions/src ] ; then
+  fpath=(${HOME}/.zsh/zsh-completions/src $(brew --prefix)/share/zsh/site-functions $fpath)
 fi
+
+autoload -Uz compinit
+compinit
+
+# fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
 
 # 補完で小文字でも大文字にマッチさせる
