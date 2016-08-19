@@ -30,10 +30,10 @@ setopt share_history
 
 # 補完機能を有効にする
 
-if [ -d ${HOME}/.zsh/zsh-completions/src ] ; then
-  fpath=(${HOME}/.zsh/zsh-completions/src $(brew --prefix)/share/zsh/site-functions $fpath)
-fi
+fpath=(${HOME}/.zsh/zsh-completions(N-/) $fpath)
+fpath=($(brew --prefix)/share/zsh/site-functions(N-/) $fpath)
 
+autoload -Uz add-zsh-hook
 autoload -Uz compinit
 compinit
 
