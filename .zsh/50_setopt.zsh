@@ -28,18 +28,6 @@ setopt hist_reduce_blanks
 # 同時に起動したzshの間でヒストリを共有
 setopt share_history
 
-# 補完機能を有効にする
-
-fpath=(${HOME}/.zsh/zsh-completions(N-/) $fpath)
-fpath=($(brew --prefix)/share/zsh/site-functions(N-/) $fpath)
-
-autoload -Uz add-zsh-hook
-autoload -Uz compinit
-compinit
-
-# fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
-
-
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
