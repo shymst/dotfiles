@@ -1,17 +1,8 @@
-
-# NOTE: set fpath before compinit
-typeset -gx -U fpath
-fpath=( \
-    ~/.zsh/Completion(N-/) \
-    ~/.zsh/functions(N-/) \
-    ~/.zsh/plugins/zsh-completions(N-/) \
-    /usr/local/share/zsh/site-functions(N-/) \
-    $fpath \
-    )
-
-# autoload
-autoload -Uz run-help
-autoload -Uz add-zsh-hook
-autoload -Uz colors && colors
-autoload -Uz compinit && compinit -u
-autoload -Uz is-at-least
+for d in "/share/zsh-completions" "/share/zsh/zsh-site-functions" "/share/zsh/site-functions";do
+  brew_completion=$(brew --prefix 2>/dev/null)$d
+  if [ $? -eq 0 ] && [ -d "$brew_completion" ];then
+    fpath=($brew_completion $fpath)
+  fi
+done
+autoload -Uz compinit
+compinit
