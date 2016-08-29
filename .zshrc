@@ -94,4 +94,6 @@ function tmux_automatically_attach_session()
 }
 tmux_automatically_attach_session
 
+rm ~/.zcompdump
+compinit
 

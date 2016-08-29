@@ -48,7 +48,7 @@ for d in "/share/zsh-completions" "/share/zsh/zsh-site-functions" "/share/zsh/si
     fpath=($brew_completion $fpath)
   fi
 done
+
 autoload -Uz compinit
 compinit -D
-
 
