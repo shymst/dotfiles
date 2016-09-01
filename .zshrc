@@ -97,3 +97,4 @@ tmux_automatically_attach_session
 rm ~/.zcompdump
 compinit
 
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
