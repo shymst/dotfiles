@@ -1,3 +1,5 @@
+#!/bin/bash
+
 DOTPATH=~/.dotfiles
 
 # git が使えるなら git
@@ -65,15 +67,23 @@ brew cask install virtualbox
 brew cask install atom
 brew cask install google-chrome
 
-mas install 497799835 # Xcode
-539883307 LINE
-921923693 LibreOffice Vanilla
-406056744 Evernote
-485812721 TweetDeck
-425424353 The Unarchiver
-411246225 Caffeine
-425955336 Skitch
-1024640650 CotEditor
-803453959 Slack
-1007457278 Realm Browser
-568494494 Pocket
+mas install 539883307  # LINE
+mas install 921923693  # LibreOffice Vanilla
+mas install 1037994372 # DrCleanerPro
+mas install 409183694  # Keynote
+mas install 406056744  # Evernote
+mas install 441258766  # Magnet
+mas install 485812721  # TweetDeck
+mas install 425424353  # The Unarchiver
+mas install 411246225  # Caffeine
+mas install 425955336  # Skitch
+mas install 668208984  # GIPHY CAPTURE
+mas install 443987910  # 1Password
+mas install 409203825  # Numbers
+mas install 497799835  # Xcode
+mas install 409201541  # Pages
+mas install 1024640650 # CotEditor
+mas install 803453959  # Slack
+mas install 1007457278 # Realm Browser
+mas install 1000397973 # Wallcat
+mas install 568494494  # Pocket
