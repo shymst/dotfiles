@@ -95,6 +95,6 @@ function tmux_automatically_attach_session()
 tmux_automatically_attach_session
 
 rm ~/.zcompdump
-compinit
+compinit -u
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
