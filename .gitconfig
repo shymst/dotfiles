@@ -1,0 +1,136 @@
+[User]
+	name = Shunya Yamashita
+	email = shymst125@gmail.com
+[github]
+	user = shymst
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[core]
+	pager = less -R
+	editor = vim
+	excludesfile = ~/.gitignore
+[color]
+	ui = auto
+	diff = auto
+	grep = auto
+	branch = auto
+	status = auto
+	interactive = auto
+[push]
+#	default = nothing
+[pull]
+#	default = nothing
+	rebase = true
+	ff = only
+[merge]
+	ff = false
+	tool = vimdiff
+	keepBackup = false
+[mergetool]
+	keepBackup = false
+[grep]
+	lineNumber = true
+[receive]
+	denyDeleteCurrent = warn
+[alias]
+	alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
+	refresh= !git fetch origin && git remote prune origin
+	# status/show (s)
+	s  = status
+	ss = status -s
+	sh = show
+	# show status after add (a)
+	a  = !git add .  && git status
+	ad = !git add .  && git status
+	au = !git add -u && git status
+	aa = !git add .  && git add -u && git status
+	ap = add -p
+	# commit (c)
+	c   = commit
+	ca  = commit -a
+	cm  = commit -m
+	cam = commit --amend
+	wip = commit -m 'wip'
+	wipom = !git commit -m 'wip' && git push origin master
+	# checkout (ch)
+	ch  = checkout
+	chb = checkout -b
+	chm = checkout master
+	chd = checkout develop
+	# branch (b, br)
+	b   = branch
+	br  = branch
+	ba  = branch -a                  # show all branches
+	bra = branch -a                  # show all branches
+	bm  = branch --merged            # already merged branches
+	brm = branch --merged            # already merged branches
+	bn  = branch --no-merged         # not merged branches
+	brn = branch --no-merged         # not merged branches
+	# pull/fetch
+	drag = pull --rebase
+	ft   = fetch
+	# push
+	po  = push origin
+	pom = push origin master
+	pod = push origin develop
+	# rebase (rb)
+	rbm = rebase master
+	rbd = rebase develop
+	rbc = rebase --continue
+	rba = rebase --abort
+	# revert (rv)
+	rv  = revert
+	rvh = revert HEAD
+	# reset (rs)
+	rs   = reset
+	rsh  = reset --hard
+	rss  = reset --soft
+	rssh = reset --soft HEAD
+	rshh = reset --hard HEAD
+	# log (l)
+	filelog = log -u
+	fl = log -u
+	l  = log --oneline --stat
+	lp = log --oneline -p
+	ls = log --stat --abbrev-commit -n 1 # display previous log
+	lo = log origin
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	# log tree
+	ln = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset' --name-status
+	lt = log --oneline --since="00:00:01" --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
+	tr = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
+	ta = log --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
+	tao = log origin --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
+	# diff (d)
+	dr  = "!f() { git diff "$1"^.."$1"; }; f"
+	lc  = "!f() { git ll "$1"^.."$1"; }; f"
+	diffr  = "!f() { git diff "$1"^.."$1"; }; f"
+	d  = diff
+	di  = diff
+	dm = diff master
+	dw = diff --color-words
+	d1 = diff HEAD~
+	d2 = diff HEAD~2
+	d3 = diff HEAD~3
+	# grep (gr)
+	gr  = grep
+	grn = grep -n
+	f = "!git ls-files | grep -i"
+	# stash (st)
+	st  = stash
+	stl = stash list
+	stp = stash pop
+	sts = stash save
+	# cherry-pick (chpk)
+	chpk = cherry-pick
+	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+	root = rev-parse --show-toplevel
+[help]
+	autocorrect = 0
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[merge "mergepbx"]
+	name = Xcode project files merger
+	driver = mergepbx %O %A %B
