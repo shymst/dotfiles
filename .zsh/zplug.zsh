@@ -1,8 +1,17 @@
+
 has_plugin() {
     (( $+functions[zplug] )) || return 1
     zplug check "${1:?too few arguments}"
     return $status
 }
+
+# Local loading
+zplug "zplug/zplug"
+
+zplug "~/.zsh", \
+    from:local, \
+    nice:2, \
+    use:"<->_*.zsh"
 
 
 # Make sure to use double quotes
@@ -41,19 +50,6 @@ zplug "mollifier/anyframe", at:4c23cb60
 # Install if "if:" tag returns true
 zplug "hchbaw/opp.zsh", if:"(( ${ZSH_VERSION%%.*} < 5 ))"
 
-# Can manage gist file just like other packages
-zplug "b4b4r07/79ee61f7c140c63d2786", \
-    from:gist, \
-    as:command, \
-    use:get_last_pane_path.sh
-
-# Support bitbucket
-zplug "b4b4r07/hello_bitbucket", \
-    from:bitbucket, \
-    as:command, \
-    hook-build:"chmod 755 *.sh", \
-    use:"*.sh"
-
 # Group dependencies. Load emoji-cli if jq is installed in this example
 zplug "stedolan/jq", \
     from:gh-r, \
@@ -69,5 +65,3 @@ zplug "b4b4r07/emoji-cli", \
 # after executing compinit command and sourcing other plugins
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 
-# Can manage local plugins
-zplug "~/.zsh", from:local
