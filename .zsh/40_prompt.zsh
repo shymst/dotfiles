@@ -1,4 +1,5 @@
 # ----- PROMPT -----
+
 ## PROMPT
 # PROMPT=$'[%*] → '
 
