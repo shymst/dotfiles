@@ -24,41 +24,8 @@ zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
 # Can manage everything e.g., other person's zshrc
 zplug "tcnksm/docker-alias", use:zshrc
 
-# Disable updates using the "frozen:" tag
-zplug "k4rthik/git-cal", as:command, frozen:1
-
-# Grab binaries from GitHub Releases
-# and rename with the "rename-to:" tag
-zplug "junegunn/fzf-bin", \
-    from:gh-r, \
-    as:command, \
-    rename-to:fzf, \
-    use:"*darwin*amd64*"
-
-# Supports oh-my-zsh plugins and the like
-zplug "plugins/git",   from:oh-my-zsh, if:"(( $+commands[git] ))"
 zplug "themes/duellj", from:oh-my-zsh
 zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
-
-# Run a command after a plugin is installed/updated
-zplug "tj/n", hook-build:"make install"
-
-# Supports checking out a specific branch/tag/commit
-zplug "b4b4r07/enhancd", at:v1
-zplug "mollifier/anyframe", at:4c23cb60
-
-# Install if "if:" tag returns true
-zplug "hchbaw/opp.zsh", if:"(( ${ZSH_VERSION%%.*} < 5 ))"
-
-# Group dependencies. Load emoji-cli if jq is installed in this example
-zplug "stedolan/jq", \
-    from:gh-r, \
-    as:command, \
-    rename-to:jq
-zplug "b4b4r07/emoji-cli", \
-    on:"stedolan/jq"
-# Note: To specify the order in which packages should be loaded, use the nice
-#       tag described in the next section
 
 # Set the priority when loading
 # e.g., zsh-syntax-highlighting must be loaded
