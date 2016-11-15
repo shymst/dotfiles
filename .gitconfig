@@ -43,7 +43,8 @@
 	au = !git add -u && git status
 	aa = !git add .  && git add -u && git status
 	ap = add -p
-  ac = !git add . && git commit -m
+  ac = !git add . && git commit
+  acm = !git add . && git commit -m
 	# commit (c)
 	c   = commit
 	ca  = commit -a
