@@ -100,4 +100,3 @@ compinit -u
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-eval "$(rbenv init -)"
