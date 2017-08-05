@@ -36,6 +36,7 @@ run_brew() {
       'cocoapods'
       'swiftlint'
       'zsh-completions'
+      'reattach-to-user-namespace'
     )
 
     local installed=`brew list`
