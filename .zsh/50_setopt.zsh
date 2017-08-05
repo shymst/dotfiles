@@ -1,54 +1,52 @@
-
-###########################
-#        Options
-###########################
-# 環境変数
+# ------------------------------
+# General Settings
+# ------------------------------
+export EDITOR=vim
 export LANG=ja_JP.UTF-8
+export LC_ALL=ja_JP.UTF-8
+export KCODE=u
+export AUTOFEATURE=true
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export TERM=screen-256color
 
-# ヒストリの設定
+bindkey -e
+
+setopt no_beep
+setopt auto_cd
+setopt auto_pushd
+setopt correct
+setopt magic_equal_subst
+setopt prompt_subst
+setopt notify
+setopt equals
+
+### Complement ###
+autoload -U compinit; compinit
+setopt auto_list                     # 補完候補を一覧で表示する(d)
+setopt auto_menu                     # 補完キー連打で補完候補を順に表示する(d)
+setopt list_packed
+setopt list_types
+bindkey "^[[Z" reverse-menu-complete # Shift-Tabで補完候補を逆順する
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+### Glob ###
+setopt extended_glob
+unsetopt caseglob
+
+### History ###
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-
-# コマンドのスペルを訂正
-setopt correct
-
-# beep を無効にする
-setopt no_beep
-
-# 直前のコマンドの重複を削除
+setopt bang_hist          # !を使ったヒストリ展開を行う(d)
+setopt extended_history
 setopt hist_ignore_dups
-
-# 同じコマンドをヒストリに残さない
-setopt hist_ignore_all_dups
-
-# 余分な空白は詰めて記録
-setopt hist_reduce_blanks
-
-# 同時に起動したzshの間でヒストリを共有
 setopt share_history
-
-# 補完で小文字でも大文字にマッチさせる
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-# 補完候補を詰めて表示
-setopt list_packed
-
-# 補完候補一覧をカラー表示
-zstyle ':completion:*' list-colors ''
-
-# C で標準出力をクリップボードにコピーする
-if which pbcopy >/dev/null 2>&1 ; then
-    alias -g C='| pbcopy'
-fi
-
-for d in "/share/zsh-completions" "/share/zsh/zsh-site-functions" "/share/zsh/site-functions";do
-  brew_completion=$(brew --prefix 2>/dev/null)$d
-  if [ $? -eq 0 ] && [ -d "$brew_completion" ];then
-    fpath=($brew_completion $fpath)
-  fi
-done
-
-autoload -Uz compinit
-compinit -u
-
+setopt hist_reduce_blanks
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
+function history-all { history -E 1 }
