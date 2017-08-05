@@ -3,21 +3,22 @@
 ## Setup
 
 ```
-$ curl -L raw.github.com/shymst/dotfiles/master/install.sh | bash
-```
-
-OR
-
-```
 $ git clone https://github.com/shymst/dotfiles.git
 $ cd ~/dotfiles
 $ make install
 ```
 
+## Usage
 
-- `make update`; Updating dotfiles repository
-- `make deploy`; Deploying dot files
-- `make init`; Initializing some settings
+```
+make list           #=> Show dot files in this repo
+make deploy         #=> Create symlink to home directory
+make init           #=> Setup environment settings
+make update         #=> Fetch changes for this repo
+make install        #=> Run make update, deploy, init
+make clean          #=> Remove the dot files and this repo
+```
 
 ## Credits
+
 [b4b4r07/dotfiles](https://github.com/b4b4r07/dotfiles)
