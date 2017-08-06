@@ -22,4 +22,3 @@ split_vim() {
 }
 
 eval "$(hub alias -s)"
-
