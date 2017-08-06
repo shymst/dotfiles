@@ -1,8 +1,5 @@
-[User]
-	name = Shunya Yamashita
-	email = shymst125@gmail.com
-[github]
-	user = shymst
+[include]
+    path = ~/.gitconfig.local
 [core]
 	pager = less -R
 	editor = vim
