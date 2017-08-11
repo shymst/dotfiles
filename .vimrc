@@ -48,6 +48,9 @@ set laststatus=2
 set cursorline      " 現在の行をハイライト
 
 " ---------- Backup Options ----------
+
+silent !mkdir $HOME/.vim/backup > /dev/null 2>&1
+
 "バックアップファイルのディレクトリを指定する
 set backupdir=$HOME/.vim/backup
 
