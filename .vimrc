@@ -146,7 +146,3 @@ if dein#check_install()
 endif
 
 filetype plugin on
-
-" ---------- swapfile ----------
-
-set noswapfile
