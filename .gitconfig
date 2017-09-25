@@ -129,7 +129,8 @@
 	# delete branch
 	de = "!f () { git checkout $1; git branch --merged | egrep -v '\\*|develop|master' | xargs git branch -d; };f"
   fpde = !git fetch -p && git de
-  ppap = !git pull -p && git de
+  ppap = !git pull -p && git de && git emoji
+	emoji = "!f () { echo '🖊 🍍 🍎 🖊'; };f"
 [help]
 	autocorrect = 0
 [filter "media"]
