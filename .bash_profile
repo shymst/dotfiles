@@ -125,3 +125,5 @@ export HISTCONTROL=ignoreboth:erasedups
 # cd でtypoしても自動的に正しいパスに移動
 shopt -s cdspell
 
+export LANG=ja_JP.UTF-8
+

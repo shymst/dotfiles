@@ -90,3 +90,6 @@ function tmux_automatically_attach_session() {
   fi
 }
 tmux_automatically_attach_session
+
+export LANG=ja_JP.UTF-8
+if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi

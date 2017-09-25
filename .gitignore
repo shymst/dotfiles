@@ -4,3 +4,4 @@
 !.config/fish
 .zsh/history/
 .vim/dein/*
+log/*
