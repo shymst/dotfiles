@@ -92,4 +92,14 @@ function tmux_automatically_attach_session() {
 tmux_automatically_attach_session
 
 export LANG=ja_JP.UTF-8
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+# swiftenv
 if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# postgres
+export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
