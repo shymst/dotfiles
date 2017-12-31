@@ -1,10 +1,5 @@
-.DS_Store
-*~
-.config/*
-!.config/fish
-.zsh/history/
-.vim/dein/*
-log/*
-package-lock.json
-.ruby-version
-.idea/
+/.vim/bundle/**/*
+/.zshenv.secret
+
+### Vagrant template
+.vagrant/

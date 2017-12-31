@@ -1,16 +1,3 @@
-# ------------------------------
-# General Settings
-# ------------------------------
-export EDITOR=vim
-export LANG=ja_JP.UTF-8
-export LC_ALL=ja_JP.UTF-8
-export KCODE=u
-export AUTOFEATURE=true
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
-export TERM=screen-256color
-
 bindkey -e
 
 setopt no_beep

@@ -140,6 +140,5 @@
 [merge "mergepbx"]
 	name = Xcode project files merger
 	driver = mergepbx %O %A %B
-[user]
-	name = lcl-yamashita
-	email = yamashita@lclco.com
+[credential]
+	helper = osxkeychain

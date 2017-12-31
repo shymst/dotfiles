@@ -37,6 +37,7 @@ run_brew() {
       'swiftlint'
       'zsh-completions'
       'reattach-to-user-namespace'
+      'fzf'
     )
 
     local installed=`brew list`
