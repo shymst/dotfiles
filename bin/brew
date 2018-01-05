@@ -38,6 +38,7 @@ run_brew() {
       'zsh-completions'
       'reattach-to-user-namespace'
       'fzf'
+      'neovim'
     )
 
     local installed=`brew list`
