@@ -3,6 +3,11 @@
 # 	email = shymst125@gmail.com
 # [github]
 # 	user = shymst
+[user]
+	name = lcl-yamashita
+	email = yamashita@lclco.com
+[github]
+	user = lcl-yamashita
 [core]
 	pager = less -R
 	editor = vim
@@ -44,7 +49,7 @@
 	aa = !git add .  && git add -u && git status
 	ap = add -p
   ac = !git add . && git commit
-  acm = !git add . && git commit -m
+  # acm = !git add . && git commit -m
 	# commit (c)
 	c   = commit
 	ca  = commit -a
