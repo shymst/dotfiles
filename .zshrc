@@ -107,8 +107,6 @@ zplugin snippet 'OMZ::plugins/zsh_reload/zsh_reload.plugin.zsh'
 zplugin ice from'gh-r' as'command' mv'gotcha_* -> gotcha'
 zplugin light 'b4b4r07/gotcha'
 
-# (省略)
-
 # mosh や ssh でリモートのシェルに自分の rc ファイルをロードします。
 zplugin snippet --command \
     'https://raw.githubusercontent.com/Russell91/sshrc/master/moshrc'
@@ -137,3 +135,13 @@ zplugin cdreplay -q
 zplugin light 'zdharma/fast-syntax-highlighting'
 # コマンドをサジェストするプラグインを遅延ロードします。
 zplugin light 'zsh-users/zsh-autosuggestions'
+
+
+if [ -d ${HOME}/.anyenv ]; then
+  export PATH="$HOME/.anyenv/bin:$PATH"
+  eval "$(anyenv init -)"
+  for D in `ls $HOME/.anyenv/envs`
+  do
+    export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+  done
+fi

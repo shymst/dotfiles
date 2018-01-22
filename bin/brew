@@ -25,7 +25,7 @@ run_brew() {
     local -a desired_formulae=(
       'gibo'
       'git'
-      'rbenv'
+      'anyenv'
       'tmux'
       'tree'
       'zsh'

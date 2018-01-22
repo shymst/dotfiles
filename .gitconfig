@@ -10,7 +10,7 @@
 	user = lcl-yamashita
 [core]
 	pager = less -R
-	editor = vim
+	editor = /usr/bin/vim
 	excludesfile = ~/.gitignore
 [color]
 	ui = auto
