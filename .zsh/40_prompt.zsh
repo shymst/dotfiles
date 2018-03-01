@@ -1,7 +1,7 @@
 # ----- PROMPT -----
 
 ## PROMPT
-# PROMPT=$'[%*] → '
+PROMPT=$'[%*] → '
 
 ## RPROMPT
 RPROMPT=$'`branch-status-check` %~' # %~はpwd
@@ -26,10 +26,12 @@ function branch-status-check {
         suffix='%{'${reset_color}'%}'
         echo ${prefix}${branchname}${suffix}
 }
+
 function get-branch-name {
     # gitディレクトリじゃない場合のエラーは捨てます
     echo `git rev-parse --abbrev-ref HEAD 2> /dev/null`
 }
+
 function get-branch-status {
     local res color
         output=`git status --short 2> /dev/null`

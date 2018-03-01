@@ -81,23 +81,6 @@ alias npmP="npm publish"
 # nvim
 alias vim='nvim'
 
-
-# perl
-alias pbi='perlbrew install'
-alias pbl='perlbrew list'
-alias pbo='perlbrew off'
-alias pbs='perlbrew switch'
-alias pbu='perlbrew use'
-
-alias pd='perldoc'
-
-alias ple='perl -wlne'
-
-
-# python
-alias pyfind='bfs . -name "*.py"'
-
-
 # postgres
 alias startpost='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias stoppost='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
@@ -150,10 +133,6 @@ alias rake='noglob rake'
 alias brake='noglob bundle exec rake'
 alias srake='noglob sudo rake'
 alias sbrake='noglob sudo bundle exec rake'
-
-
-# zmv
-alias zmv='noglob zmv'
 
 
 # mollifier/anyframe
