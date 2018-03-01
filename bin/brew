@@ -23,22 +23,25 @@ run_brew() {
     local list_formulae
     local -a missing_formulae
     local -a desired_formulae=(
-      'gibo'
-      'git'
-      'anyenv'
-      'tmux'
-      'tree'
       'zsh'
-      'vim'
+      'zsh-completions'
+      # git
+      'git'
       'git-flow'
       'hub'
+      'gibo'
+      'ghq'
+      # vim
+      'vim'
+      'neovim'
+      # iOS
       'carthage'
       'cocoapods'
       'swiftlint'
-      'zsh-completions'
-      'reattach-to-user-namespace'
+      # etc
       'fzf'
-      'neovim'
+      'anyenv'
+      'tree'
     )
 
     local installed=`brew list`
