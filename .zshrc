@@ -1,4 +1,3 @@
-
 zmodload zsh/zpty
 
 # プラグインが使うコマンドをautoloadする

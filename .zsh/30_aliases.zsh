@@ -34,6 +34,7 @@ alias p='ps -f'
 alias sortnr='sort -n -r'
 alias unexport='unset'
 
+alias relogin='exec $SHELL -l'
 
 # directories
 alias u='builtin cd ..'
