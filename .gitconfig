@@ -146,3 +146,5 @@
 	driver = mergepbx %O %A %B
 [credential]
 	helper = osxkeychain
+[ghq]
+	root = /Users/shunyayamashita/workspace
