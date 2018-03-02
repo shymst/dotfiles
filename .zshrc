@@ -89,3 +89,14 @@ zplugin cdreplay -q
 zplugin light 'zdharma/fast-syntax-highlighting'
 # コマンドをサジェストするプラグインを遅延ロードします。
 zplugin light 'zsh-users/zsh-autosuggestions'
+
+# あとでfunctionsに移動
+function precmd() {
+  # カレントディレクトリを $HOME を ~ として表示
+  local wname=`pwd | sed -e "s|$HOME|~|"`
+  # カレントディレクトリ名
+  local tname=`pwd | sed -e 's|^.*/||'`
+
+  echo -ne "\033]2;$wname\007" # window title
+  echo -ne "\033]1;$tname\007" # tab title
+}
