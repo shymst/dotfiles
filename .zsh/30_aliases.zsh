@@ -1,11 +1,34 @@
 #!/usr/bin/env zsh
 
+# override
+alias vim='nvim'
+alias ls="ls -AFG" # カラー表示
+
+# common-aliases
+alias ll='ls -ltr'
+alias zshrc='$EDITOR ~/.zshrc'
+alias t='tail -f'
+alias dud='du -d 1 -h'
+alias duf='du -sh *'
+alias fd='bfs . -type d -name'
+alias ff='bfs . -type f -name'
+alias h='history'
+alias help='man'
+alias p='ps -f'
+alias sortnr='sort -n -r'
+alias unexport='unset'
+alias relogin='exec $SHELL -l'
+
+# directories
+alias u='builtin cd ..'
+alias md='mkdir -p'
+alias rd='rmdir'
+
 # brew
 alias brews='brew list -1'
 alias bubo='brew update && brew outdated'
 alias bubc='brew upgrade && brew cleanup'
 alias bubu='bubo && bubc'
-
 
 # bundler
 alias be='bundle exec'
@@ -17,35 +40,8 @@ alias bu='bundle update'
 alias bi='bundle_install'
 alias bcn='bundle clean'
 
-
-# common-aliases
-alias zshrc='$EDITOR ~/.zshrc'
-
-alias t='tail -f'
-
-alias dud='du -d 1 -h'
-alias duf='du -sh *'
-alias fd='bfs . -type d -name'
-alias ff='bfs . -type f -name'
-
-alias h='history'
-alias help='man'
-alias p='ps -f'
-alias sortnr='sort -n -r'
-alias unexport='unset'
-
-alias relogin='exec $SHELL -l'
-
-# directories
-alias u='builtin cd ..'
-
-alias md='mkdir -p'
-alias rd='rmdir'
-
-
 # docker-compose
 alias dco='docker-compose'
-
 alias dcb='docker-compose build'
 alias dce='docker-compose exec'
 alias dcps='docker-compose ps'
@@ -58,11 +54,9 @@ alias dcdn='docker-compose down'
 alias dcl='docker-compose logs'
 alias dclf='docker-compose logs -f'
 
-
 # gem
 alias gemb='gem build *.gemspec'
 alias gemp='gem push *.gem'
-
 
 # npm
 alias npmg="npm i -g "
@@ -78,17 +72,12 @@ alias npmt="npm test"
 alias npmR="npm run"
 alias npmP="npm publish"
 
-
-# nvim
-alias vim='nvim'
-
 # postgres
 alias startpost='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias stoppost='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias restartpost='stoppost && sleep 1 && startpost'
 alias reloadpost='pg_ctl reload -D /usr/local/var/postgres -s'
 alias statuspost='pg_ctl status -D /usr/local/var/postgres -s'
-
 
 # rails
 alias devlog='tail -f log/development.log'
@@ -128,13 +117,11 @@ alias rt='rake test'
 alias rmd='rake middleware'
 alias rsts='rake stats'
 
-
 # rake
 alias rake='noglob rake'
 alias brake='noglob bundle exec rake'
 alias srake='noglob sudo rake'
 alias sbrake='noglob sudo bundle exec rake'
-
 
 # mollifier/anyframe
 alias U='cd-gitroot'
