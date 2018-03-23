@@ -66,6 +66,9 @@ zplugin snippet 'OMZ::plugins/fancy-ctrl-z/fancy-ctrl-z.plugin.zsh'
 # エイリアスは重宝するものが多く、Gitを使うユーザーには必ずオススメしたいプラグインです。
 zplugin snippet 'OMZ::plugins/git/git.plugin.zsh'
 
+# git flowの補完とエイリアス
+zplugin snippet 'OMZ::plugins/git-flow/git-flow.plugin.zsh'
+
 # .zshrc を zcompile してロードしてくれる src コマンドを定義するプラグインです。
 zplugin snippet 'OMZ::plugins/zsh_reload/zsh_reload.plugin.zsh'
 # }}}
