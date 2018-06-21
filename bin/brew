@@ -31,7 +31,8 @@ run_brew() {
       'hub'
       'gibo'
       'ghq'
-      # vim
+      'fzf'
+      # vimg c
       'vim'
       'neovim'
       # iOS
