@@ -7,7 +7,7 @@
 ### https://raw.github.com/github/gitignore/055194192edb9ace9bedf5e6bf6e49f6ab824c6e/Global/macOS.gitignore
 
 # General
-*.DS_Store
+.DS_Store
 .AppleDouble
 .LSOverride
 
@@ -139,3 +139,6 @@ fabric.properties
 # Log
 log/*.log
 log/*.log.*
+
+# VSCode
+.vscode/*
