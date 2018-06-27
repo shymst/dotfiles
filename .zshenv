@@ -54,4 +54,6 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.jenv/bin:$PATH"
 
 # Android
+export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 export PATH="~/Library/Android/sdk/platform-tools:$PATH"
+
