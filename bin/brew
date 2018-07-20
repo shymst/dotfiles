@@ -77,10 +77,7 @@ run_brew() {
       'google-japanese-ime'
       'slack'
       'skitch'
-      'trailer'
-      'vagrant'
-      'virtualbox'
-      'atom'
+      'sketch'
       '1password'
       'realm-browser'
       'fastlane'
@@ -88,12 +85,12 @@ run_brew() {
       'android-studio'
       'chatwork'
       'docker'
-      'sketch'
       'blisk'
       'zeplin'
       'paw'
       'appcleaner'
       'spotify'
+      'visual-studio-code'
     )
     # cask
     local installed=`brew cask list`
