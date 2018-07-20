@@ -85,12 +85,11 @@ run_brew() {
       'android-studio'
       'chatwork'
       'docker'
-      'blisk'
       'zeplin'
-      'paw'
       'appcleaner'
       'spotify'
       'visual-studio-code'
+      'divvy'
     )
     # cask
     local installed=`brew cask list`
