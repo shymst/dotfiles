@@ -1,13 +1,8 @@
-# [User]
-# 	name = Shunya Yamashita
-# 	email = shymst125@gmail.com
-# [github]
-# 	user = shymst
-[user]
-	name = lcl-yamashita
-	email = yamashita@lclco.com
+[User]
+	name = shymst
+ 	email = shymst125@gmail.com
 [github]
-	user = lcl-yamashita
+ 	user = shymst
 [core]
 	pager = less -R
 	editor = /usr/bin/vim
@@ -148,3 +143,8 @@
 	helper = osxkeychain
 [ghq]
 	root = ~/workspace
+[url "github.com:"]
+	InsteadOf = https://github.com/
+	InsteadOf = git@github.com:
+[credential "https://github.com"]
+  username = shymst

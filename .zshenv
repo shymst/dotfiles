@@ -49,6 +49,7 @@ export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46
 # go
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
+export GOPATH=$HOME/go/goroot
 
 # jenv
 export PATH="$HOME/.jenv/bin:$PATH"
@@ -57,3 +58,5 @@ export PATH="$HOME/.jenv/bin:$PATH"
 export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 export PATH="~/Library/Android/sdk/platform-tools:$PATH"
 
+# direnv
+eval "$(direnv hook zsh)"

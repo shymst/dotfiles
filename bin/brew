@@ -31,7 +31,6 @@ run_brew() {
       'hub'
       'gibo'
       'ghq'
-      'fzf'
       # vimg c
       'vim'
       'neovim'
@@ -90,6 +89,8 @@ run_brew() {
       'spotify'
       'visual-studio-code'
       'divvy'
+      'stay'
+      'insomniax'
     )
     # cask
     local installed=`brew cask list`
